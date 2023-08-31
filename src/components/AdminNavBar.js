@@ -1,12 +1,25 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function AdminNavBar({ onChangePage }) {
+function AdminNavbar() {
   return (
-    <nav>
-      <button onClick={() => onChangePage("Form")}>New Question</button>
-      <button onClick={() => onChangePage("List")}>View Questions</button>
+    <nav className="admin-navbar">
+      <ul>
+        <li>
+          <Link to="/admin">Dashboard</Link>
+        </li>
+        <li>
+          <Link to="/admin/questions">Questions</Link>
+        </li>
+        <li>
+          <Link to="/admin/quizzes">Quizzes</Link>
+        </li>
+        <li>
+          <Link to="/admin/users">Users</Link>
+        </li>
+      </ul>
     </nav>
   );
 }
 
-export default AdminNavBar;
+export default AdminNavbar;

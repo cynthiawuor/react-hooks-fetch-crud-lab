@@ -20,6 +20,22 @@ function QuestionForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(formData);
+    const formData = {
+      prompt: 'Your question prompt',
+      answers: ['Answer 1', 'Answer 2', 'Answer 3'],
+      correctIndex: 0, 
+    };
+  
+    fetch('http://localhost:4000/questions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.json())
+      .then(newQuestion => {
+        setQuestions([...questions, newQuestion]);
+      });
+  };
   }
 
   return (
@@ -88,6 +104,6 @@ function QuestionForm(props) {
       </form>
     </section>
   );
-}
+
 
 export default QuestionForm;
